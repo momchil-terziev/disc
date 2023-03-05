@@ -8,19 +8,27 @@ function iteratePandQ(i, p) {
   e21 = m - f;
   e32 = c - m;
 
-  if (e21 - e32 < 0) {
+  if (e32 / e21 < 0) {
     s = -1;
   } else {
-    s = 0;
+    s = 1;
   }
 
   R = e21 / e32;
+  if (i==0) {
+    p = log(e32/e21)/log(r21);
+  }
+  
   q = log((pow(r21, p) - s) / (pow(r32, p) - s));
 
-  pcor = log(abs(abs(e32 / e21) + q)) / log(r21);
- 
+  pcor = (log(abs(e32 / e21)) + q) / log(r21);
+
+  console.log("p:"+p+", iteration:" + i)
+  console.log("q:"+q+", iteration:" + i)
+  console.log("pcor"+pcor+",iteration"+i)
+  
   if (abs(pcor - p) < 1e-4) {
-    return [i,pcor,q];
+    return pcor,q;
 
   } else {
     iteratePandQ(i, pcor);

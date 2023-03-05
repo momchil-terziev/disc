@@ -34,7 +34,7 @@ function FSREmethod() {
 
   //
  // plabel.html("Order of accuracy: " + p);
-  Rlabel.html("Refinement ratio: " + R);
+  Rlabel.html("Convergence ratio: " + R);
   e21label.html("e21: " + e21);
   e32label.html("e32: " + e32);
   fextlabel.html("Extrapolated solution: " + fext);

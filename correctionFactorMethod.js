@@ -2,32 +2,43 @@ function correctionFactorMethod() {
   if (r21 == r32) {
     reftype.html("Constant refinement factor used");
     qlabel.html(" ");
+    plabel.html("Order of accuracy: " + p);
+    delta = e21 / (pow(r21, p) - 1);
+    U = ((1.25 * delta) / f) * 100;
+    deltalabel.html("Error: " + delta);
   } else {
     var i = 0;
     iteratePandQ(0, p);
     reftype.html("Variable refinement factor used " + " ");
     qlabel.html("q: " + q);
+    plabel.html("Order of accuracy: " + pcor);
+
+    delta = e21 / (pow(r21, pcor) - 1);
+    U = ((1.25 * delta) / f) * 100;
+
+    deltalabel.html("Error: " + delta);
   }
+
 
   delta = e21 / (pow(r21, p) - 1);
   fext = f - delta;
 
   CF = (pow(r21, p) - 1) / (pow(r21, 2) - 1);
   if (CF > 0.875 && CF <= 1.125) {
-    Ucf = abs(delta) * (9.6 * pow((1 - CF), 2) + 1.1);
+    Ucf = abs(delta) * (9.6 * pow(1 - CF, 2) + 1.1);
   } else {
     Ucf = abs(delta) * (1 + 2 * abs(1 - CF));
   }
   //
   // console.log(abs(delta) * ( 2 * abs(1 - CF)+1))
   //
-  plabel.html("Order of accuracy: " + p);
+  //plabel.html("Order of accuracy: " + p);
   Rlabel.html("Refinement ratio: " + R);
   e21label.html("e21: " + e21);
   e32label.html("e32: " + e32);
   fextlabel.html("Extrapolated solution: " + fext);
   deltalabel.html("Error: " + delta);
-  uncertaintylabel.html("Uncertainty: " + Ucf/f*100 + "%");
+  uncertaintylabel.html("Uncertainty: " + (Ucf / f) * 100 + "%");
   CFlabel.html("CF: " + CF);
   Plabel.html(" ");
   if (r21v.value() == r32v.value()) {
@@ -36,5 +47,5 @@ function correctionFactorMethod() {
     CFlabel.position(5, 450);
   }
   //
-  console.log(Ucf)
+  console.log(Ucf);
 }

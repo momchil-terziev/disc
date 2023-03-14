@@ -24,18 +24,22 @@ function setup() {
 
   fine = createInput("1");
   fine.position(ypos, i + yd);
-
+  fine.size(140)
+  
   m = createElement("h4", "Medium solution");
   m.position(5, 90 + 30);
 
   medium = createInput("2");
   medium.position(ypos, i + yd * 2);
-
+  medium.size(140)
+  
   c = createElement("h4", "Coarse solution");
   c.position(5, 90 + yd * 2);
+  
   coarse = createInput("5");
   coarse.position(ypos, i + yd * 3);
-
+  coarse.size(140)
+  
   analysisType = createElement("h3", "Type of analysis");
   analysisType.position(5, 90 + yd * 3.1);
 

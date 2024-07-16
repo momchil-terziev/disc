@@ -1,4 +1,5 @@
 # Discretisation uncertainty calculator
+
 Uses the following methods to estimate the discretisation uncertianty based on a solution triplet:
 - Grid Convergence Index
 - Correction Factor Method
